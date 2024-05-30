@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', (e)=>{
     console.log('Start');
 
-    createCard(document.querySelector('body'));
+    createCard(document.getElementById('card_dog'));
     let apiRequest = 'https://dog.ceo/api/breeds/image/random';
-    loadImg(apiRequest); 
 
-    document.querySelector('div.img_dog').addEventListener('click', (e) => {
+    document.querySelector('button').addEventListener('click', (e) => {
         loadImg(apiRequest); 
     });   
 })
@@ -39,6 +38,7 @@ const loadImg = (apiRequest) => {
 const createCard = (element) => {
     let divDog = document.createElement('div');
     divDog.className = 'img_dog';
+    divDog.style.backgroundImage = "url('./img/load.png')"
 
     element.appendChild(divDog);
 }
