@@ -10,9 +10,16 @@ body{
     transform: translate(-50%, -50%);
 }
 
-#card_dog{
-    width: 200px;
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
 }
+
+.card_dog{
+    width: 200px;
+    margin: 5px;
 
 .img_dog{
     height: 200px;
