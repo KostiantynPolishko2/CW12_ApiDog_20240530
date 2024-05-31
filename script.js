@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', (e)=>{
     document.querySelector('body').appendChild(createCard('dog1', api));
     document.getElementById('dog1').querySelector('button').addEventListener('click', loadImg);
 
-    console.log(document.querySelector('button').apiRequest);
+    const cardDog = new CardDog('dog2', api);
+    document.querySelector('body').appendChild(cardDog.divIDCardDog);
 })
 
 const loadImg = (e) => {
@@ -24,11 +25,11 @@ const loadImg = (e) => {
         if(apiObj.status !== 'success'){
             throw 'Error!\nImg did not load!'
         }
-        document.querySelector('div.img_dog').style.backgroundImage = `url(${apiObj.message})`;
+        e.target.nextElementSibling.style.backgroundImage = `url(${apiObj.message})`;
     }).
     catch(error => {
         console.log(error);
-        document.querySelector('div.img_dog').style.backgroundImage = "url('./img/error404.jpg')";
+        e.target.nextElementSibling.style.backgroundImage = "url('./img/error404.jpg')";
     })
     .finally(() => {
         console.log('End');
