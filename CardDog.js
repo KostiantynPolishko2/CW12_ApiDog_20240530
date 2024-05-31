@@ -1,4 +1,4 @@
-class CardDog{
+class CardDog {
     identifier;
     api;
     divIdCardDog;
