@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', (e)=>{
     const cardDog1 = new CardDog('dog1', api);
     document.querySelector('body').appendChild(cardDog1.divIDCardDog);
 
-    const cardDog2 = new CardDog('dog2', api);
-    document.querySelector('body').appendChild(cardDog2.divIDCardDog);
+    const cardDogHtml2 = new CardDogHtmlElemnt('dog2', api);
+    document.querySelector('body').appendChild(cardDogHtml2);
+
 })
