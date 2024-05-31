@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', (e)=>{
     console.log('Start');
+ 
+    let api = 'https://dog.ceo/api/breeds/image/random';
 
-    createCard(document.getElementById('card_dog'));
-    let apiRequest = 'https://dog.ceo/api/breeds/image/random';
+    document.querySelector('body').appendChild(createCard('dog1', api));
+    document.getElementById('dog1').querySelector('button').addEventListener('click', loadImg);
 
-    document.querySelector('button').addEventListener('click', (e) => {
-        loadImg(apiRequest); 
-    });   
+    console.log(document.querySelector('button').apiRequest);
 })
 
-const loadImg = (apiRequest) => {
-    fetch(apiRequest).
+const loadImg = (e) => {
+    fetch(e.target.apiRequest).
     then(res => {
         if(res.status === 200){
             return res.json();
@@ -35,10 +35,24 @@ const loadImg = (apiRequest) => {
     });
 }
 
-const createCard = (element) => {
-    let divDog = document.createElement('div');
-    divDog.className = 'img_dog';
-    divDog.style.backgroundImage = "url('./img/load.png')"
+const createCard = (identifier, api) => {
+    let divIDCardDog = document.createElement('div');
+    divIDCardDog.id = identifier;
+    divIDCardDog.className = 'card_dog';
 
-    element.appendChild(divDog);
+    let btnLoad = document.createElement('button');
+    btnLoad.type = 'button';
+    btnLoad.name = 'load_img';
+    btnLoad.insertBefore(document.createTextNode('Load Img'), btnLoad.firstElementChild);
+
+    let divImgDog = document.createElement('div');
+    divImgDog.className = 'img_dog';
+    divImgDog.style.backgroundImage = "url('./img/load.png')"
+
+    divIDCardDog.appendChild(btnLoad);
+    divIDCardDog.appendChild(divImgDog);
+
+    Object.defineProperties(btnLoad, {apiRequest: {value: api, writable: false}})
+
+    return divIDCardDog;
 }
