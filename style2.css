@@ -25,11 +25,11 @@ div.breed > button {
       inset -2px -2px 3px rgba(0, 0, 0, 0.6);
 }
 
-.btn_breed{
+#btn_breed{
     background-color: rgba(220, 0, 0, 1);
 }
 
-.btn_sub-breed{
+#btn_sub-breed{
     background-color: rgb(0, 128, 0, 1);
 }
 
