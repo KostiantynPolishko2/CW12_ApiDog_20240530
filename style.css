@@ -8,6 +8,12 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+
+h4{
+    text-align: center;
+    padding: 5px;
 }
 
 .flex_row{
@@ -20,6 +26,7 @@ body{
 .card_dog{
     width: 200px;
     margin: 5px;
+}
 
 .img_dog{
     height: 200px;
@@ -30,7 +37,7 @@ body{
     border-radius: 0px 0px 5px 5px;
 }
 
-button{
+div.card_dog > button{
     border: none;
     background-color: rgb(58, 63, 63);
     color: white;
@@ -40,7 +47,7 @@ button{
     border-radius: 5px 5px 0px 0px;
 }
 
-button:hover{
+div.card_dog > button:hover{
     border: 2px solid;
     border-radius: 5px;
     background-color: rgb(28, 109, 35);
