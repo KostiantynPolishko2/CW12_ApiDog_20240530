@@ -20,25 +20,43 @@ const getSubBreed = async (breed) => {
         const subBreeds = await getBreeds(api);
 
         if(subBreeds.length !== 0){
-            console.log(subBreeds);
+            loadCardDog(breed, 'undefined');
+            createDropDownSubBreeds(breed, subBreeds);
         }
         else{
-            apiRequest = `https://dog.ceo/api/breed/${breed}/images/random`;
-            cardDogHtml.identifier = breed;
-            cardDogHtml.api = apiRequest;
-            cardDogHtml.btnLoad.apiRequest = apiRequest;
-
-            if(document.querySelector('header').firstElementChild == null){
-                document.querySelector('header').appendChild(cardDogHtml);
+            if(document.getElementById('btn_sub-breed').nextElementSibling.firstElementChild != null){
+                document.getElementById('btn_sub-breed').nextElementSibling.firstElementChild.remove();
             }
-            else{
-                cardDogHtml.divImgDog.style.backgroundImage = "url('./img/load.png')"
-            }
+            loadCardDog(breed, `https://dog.ceo/api/breed/${breed}/images/random`);
         }
     }
     catch(ex){
         console.log(ex);
     }
+}
+
+const loadCardDog = (id, apiRequest) => {
+    cardDogHtml.identifier = id;
+    cardDogHtml.api = apiRequest;
+    cardDogHtml.btnLoad.apiRequest = apiRequest;
+
+    if(document.querySelector('header').lastElementChild.tagName !== 'CARD-DOG'){
+        document.querySelector('header').appendChild(cardDogHtml);
+    }
+    else{
+        cardDogHtml.divImgDog.style.backgroundImage = "url('./img/load.png')"
+    }
+}
+
+const createDropDownSubBreeds = (breed, subBreeds) => {
+    document.getElementById('btn_sub-breed').nextElementSibling.appendChild(createSelectTag('s_sub_breeds', 5));
+    setSelection(document.getElementsByName('s_sub_breeds')[0], subBreeds);
+
+    document.getElementsByName('s_sub_breeds')[0].addEventListener('change', (e) => {
+        const selectedOption = e.target.options[e.target.selectedIndex];
+
+        loadCardDog(`${breed}_${selectedOption.text}`, `https://dog.ceo/api/breed/${breed}/${selectedOption.text}/images/random`);
+    });
 }
 
 const createDropDownBreeds = async (e) => {

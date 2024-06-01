@@ -11,6 +11,11 @@ body{
     border: 1px solid black;
 }
 
+h4{
+    text-align: center;
+    padding: 5px;
+}
+
 .flex_row{
     display: flex;
     flex-direction: row;
