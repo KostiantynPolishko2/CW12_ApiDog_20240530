@@ -30,7 +30,7 @@ class CardDogHtmlElemnt extends HTMLElement{
         this.appendChild(this.btnLoad);
         this.appendChild(this.divImgDog);
     
-        Object.defineProperties(this.btnLoad, {apiRequest: {value: api, writable: true}})
+        Object.defineProperties(this.btnLoad, {apiRequest: {value: api, writable: true}});
     }
 
     loadImg(e){
