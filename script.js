@@ -27,7 +27,13 @@ const getSubBreed = async (breed) => {
             cardDogHtml.identifier = breed;
             cardDogHtml.api = apiRequest;
             cardDogHtml.btnLoad.apiRequest = apiRequest;
-            document.querySelector('header').appendChild(cardDogHtml);
+
+            if(document.querySelector('header').firstElementChild == null){
+                document.querySelector('header').appendChild(cardDogHtml);
+            }
+            else{
+                cardDogHtml.divImgDog.style.backgroundImage = "url('./img/load.png')"
+            }
         }
     }
     catch(ex){
