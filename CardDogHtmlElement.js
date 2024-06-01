@@ -1,6 +1,7 @@
 class CardDogHtmlElemnt extends HTMLElement{
     identifier;
     api;
+    btnLoad;
 
     constructor(identifier, api){
         super();
@@ -16,19 +17,19 @@ class CardDogHtmlElemnt extends HTMLElement{
         this.id = identifier;
         this.className = 'card_dog';
     
-        let btnLoad = document.createElement('button');
-        btnLoad.type = 'button';
-        btnLoad.name = 'load_img';
-        btnLoad.insertBefore(document.createTextNode('Load Img'), btnLoad.firstElementChild);
+        this.btnLoad = document.createElement('button');
+        this.btnLoad.type = 'button';
+        this.btnLoad.name = 'load_img';
+        this.btnLoad.insertBefore(document.createTextNode('Load Img'), this.btnLoad.firstElementChild);
     
         let divImgDog = document.createElement('div');
         divImgDog.className = 'img_dog';
         divImgDog.style.backgroundImage = "url('./img/load.png')"
     
-        this.appendChild(btnLoad);
+        this.appendChild(this.btnLoad);
         this.appendChild(divImgDog);
     
-        Object.defineProperties(btnLoad, {apiRequest: {value: api, writable: false}})
+        Object.defineProperties(this.btnLoad, {apiRequest: {value: api, writable: true}})
     }
 
     loadImg(e){

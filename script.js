@@ -1,9 +1,9 @@
+
 document.addEventListener('DOMContentLoaded', async (e)=>{
     console.log('Start');
  
+    cardDogHtml = new CardDogHtmlElemnt('dog', 'api_undefined');
     const api = 'https://dog.ceo/api/breeds/list';
-    // const nameBreeds = 's_breeds';
-    // const sizeList = 5;
 
     const btnBreed = document.getElementById('btn_breed');
     Object.defineProperties(btnBreed, {apiRequest: {value: api, writable: false}});   
@@ -11,9 +11,29 @@ document.addEventListener('DOMContentLoaded', async (e)=>{
     Object.defineProperties(btnBreed, {sizeList: {value: 5, writable: false}});   
 
     btnBreed.addEventListener('click', createDropDownBreeds);
-
 })
 
+const getSubBreed = async (breed) => {
+    let api = `https://dog.ceo/api/breed/${breed}/list`;
+
+    try{
+        const subBreeds = await getBreeds(api);
+
+        if(subBreeds.length !== 0){
+            console.log(subBreeds);
+        }
+        else{
+            apiRequest = `https://dog.ceo/api/breed/${breed}/images/random`;
+            cardDogHtml.identifier = breed;
+            cardDogHtml.api = apiRequest;
+            cardDogHtml.btnLoad.apiRequest = apiRequest;
+            document.querySelector('header').appendChild(cardDogHtml);
+        }
+    }
+    catch(ex){
+        console.log(ex);
+    }
+}
 
 const createDropDownBreeds = async (e) => {
     try{
@@ -24,7 +44,8 @@ const createDropDownBreeds = async (e) => {
 
         document.getElementsByName('s_breeds')[0].addEventListener('change', (e)=> {
         const selectedOption = e.target.options[e.target.selectedIndex];
-        console.log(selectedOption.text);
+
+        getSubBreed(selectedOption.text);
     })
     }
     catch(ex){
