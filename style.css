@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+
+h4{
+    text-align: center;
+    padding: 5px;
+}
+
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card_dog{
+    width: 200px;
+    margin: 5px;
+}
+
+.img_dog{
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    border-radius: 0px 0px 5px 5px;
+}
+
+div.card_dog > button{
+    border: none;
+    background-color: rgb(58, 63, 63);
+    color: white;
+    font-size: medium;
+    padding: 5px 10px;
+    width: inherit;
+    border-radius: 5px 5px 0px 0px;
+}
+
+div.card_dog > button:hover{
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: rgb(28, 109, 35);
+}
+
+.img_dog:hover{
+    box-shadow: 5px 5px 4px darkolivegreen;
+    border-radius: 5px;
+}
